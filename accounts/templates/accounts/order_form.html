@@ -1,0 +1,11 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row m-5">
+<form class='mt-5' action="" method="POST">
+    {% csrf_token %}
+    {{formset.as_p}}
+    <input type="submit" name="Подтвердить">
+</form>
+</div>
+{% endblock %}

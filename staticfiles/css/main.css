@@ -1,0 +1,14 @@
+#logo{
+}
+    body{
+        background-color: whitesmoke;
+    }
+    #total-orders{
+        background-color: skyblue;
+    }
+    #orders-delivered{
+        background-color: skyblue;
+    }
+    #orders-pending{
+        background-color: skyblue;
+    }

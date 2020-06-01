@@ -1,0 +1,38 @@
+{% load static %}
+<style>
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+</style> 
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-black" style="background-color: indigo;">
+    <a class="navbar-brand" href="#"><img class="ml-5" src="{% static 'images/logo.jpg'%}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto mt-3">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'account' %}">Моя страница</a>
+        </li>
+        {% if request.user.is_staff%}
+        <span><a class="hello-msg" href="admin">Админ</a></span>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Панель</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products' %}">Продукты</a>
+        </li>
+        {% endif %}
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        
+      </form>
+    </div>
+    
+    <span class="hello-msg"> Пользователь: {{request.user}} </span>
+    <span><a class="hello-msg" href="{% url 'logout' %}">Выйти</a></span>
+  </nav>

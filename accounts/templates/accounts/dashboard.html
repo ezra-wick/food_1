@@ -1,0 +1,57 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+{% include 'accounts/status.html'%}     
+
+<br>
+<div class='row ml-3 mr-3'>
+    <div class='col-md-5'>
+        <h5>Покупатели:</h5>
+        <hr>
+        <div class='card card-body'>
+            <a class='btn btn-primary btn-sm btn-block' href=""> Создать покупателя 
+            </a>
+            <table>
+                <tr>
+                    <th>Покупатель</th>
+                    <th>Номер</th>    
+                </tr>
+                {% for customer in customers %}
+                <tr>
+                    <td> <a href="{% url 'customer' customer.id %}"> {{customer.name}} </a> </td>
+                    <td>{{customer.phone}}</td>
+                </tr>
+                {% endfor %}    
+            </table>
+        </div>
+    </div>    
+
+    <div class='col-md-7'>
+        <h5>Последние заказы</h5>
+        <hr>
+        <div class='card card-body'>
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_order'%}">Сделать заказ </a>
+            <table class='table table-sm'>
+                <tr>
+                    <th>Товар</th>
+                    <th>Дата заказа</th>
+                    <th>Статус</th>
+                    <th>Обновить</th>
+                    <th>Удалить</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>{{order.product.name}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status  }}</td>
+                    <td><a href="{% url 'update_order' order.id %}">Обновить</a></td>
+                    <td><a href="{% url 'delete_order' order.id %}">Удалить</a></td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

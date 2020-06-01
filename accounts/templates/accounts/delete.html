@@ -1,0 +1,16 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row m-5">
+        <div class="card card-body mt-5">
+        <p >Вы уверены что хотите удалить заказ '{{item}}'?</p>
+    <form class='mt-5' action="{% url 'delete_order' item.id %}" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'home' %}"> Отмена</a>
+        <input type="submit" name="Подтвердить">
+    </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
